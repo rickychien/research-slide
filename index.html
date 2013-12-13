@@ -37,7 +37,7 @@
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
         <section>
-          <h2>Improve test coverage on web application</h2>
+          <h2 style="text-overflow: normal;">Improve test coverage on web application</h2>
           <p>
             <small>Created by <a href="mailto:ricky060709@gamil.com">Ricky Chien</a></small>
           </p>
@@ -62,7 +62,7 @@
         </section>
 
         <section>
-          <h2>Introduce to test coverage</h2>
+          <h2>Test coverage</h2>
         </section>
 
         <section>
@@ -74,34 +74,41 @@
               <small><p>A JavaScript unit tests example</p></small>
             </div>
           </section>
+
           <section>
             <p>If I have written a lof of test cases, how can I know what parts of the system functionality has been tested?</p>
             <br>
             <div class="fragment">
+              <p style="color: #99CCFF;"><em>Is possible to have a statistics like...</em></p>
+              <br>
               <ul>
-                <li>Module A</li>
+                <li style="color: #99CCFF;">Module A</li>
                   <ul>
-                    <li>contructor() tested: ✔</li>
-                    <li>initialize() tested: ✔</li>
-                    <li>getView() tested: ✔</li>
-                    <li>getModel() tested: ✘</li>
-                    <li>destory() tested: ✔</li>
+                    <li>contructor() has been tested: <i style="color: #00CC66;">✔</i></li>
+                    <li>initialize() has been tested: <i style="color: #00CC66;">✔</i></li>
+                    <li>getView() has been tested: <i style="color: #00CC66;">✔</i></li>
+                    <li>getModel() has been tested: <i style="color: #FF0000;">✘</i></li>
+                    <li>destory() has been tested: <i style="color: #00CC66;">✔</i></li>
                   </ul>
-                <li>Module B</li>
+                <li style="color: #99CCFF;">Module B</li>
                   <ul>
-                    <li>getValue() tested: ✔</li>
-                    <li>connect() tested: ✘</li>
+                    <li>getValue() has been tested: <i style="color: #00CC66;">✔</i></li>
+                    <li>connect() has been tested: <i style="color: #FF0000;">✘</i></li>
                   </ul>
               </ul>
             </div>
           </section>
+
           <section>
-            <p>That's it! Test coverage tool do it for us</p><br>
+            <p>That's it! Test coverage tool do it for us</p>
+            <br>
             <div class="fragment">
               <p>It reports what functionalitys have been tested</p>
               <img src="assets/coverage-report.png" alt="coverage-report">
+              <small><p>Blanket.js - JavaScript test coverage tool</p></small>
             </div>
           </section>
+
           <section>
             <p>Even show source code coverage details</p>
             <img src="assets/coverage-report-details.png" alt="coverage-report-details">
@@ -109,60 +116,117 @@
         </section>
 
         <section>
-          <h2>Introduce to web application</h2>
-        </section>
-
-        <section>
           <section>
             <h2>Web application</h2>
-            <p>Nowadays, web is going to become more and more large and complicated</p>
+          </section>
+
+          <section>
+            <h2>Demo</h2>
+            <p>A single page style web application</p>
+          </section>
+
+          <section>
+            <h2>Web is changing</h2>
+            <br>
+            <ul>
+              <li class="fragment"><p>Nowadays, web is going to become more complicated</p></li>
+              <li class="fragment"><p>Client (Browser) can take more job for server</p></li>
+              <li class="fragment"><p>Just like a desktop application but written by web technique</p></li>
+            </ul>
             <div class="fragment">
-              <img src="assets/gmail.png" alt="gmail" style="width: 680px; height: 400px;"><br>
-              <small><p>Gmail is a very good example</p></small>
+              <img src="assets/gmail.png" alt="gmail" style="width: 680px; height: 400px;">
+              <br>
+              <small><p>Gmail work just like a desktop application</p></small>
             </div>
           </section>
+
           <section>
-            <p>Web application composed by a lot of modules or third-party libraries</p>
+            <h2>To build a complicated web application</h2>
+            <br>
+            <ul>
+              <li class="fragment"><p>Developer wants to distribute JavaScript files to modules</p></li>
+              <li class="fragment"><p>Web page is composed by modules or third-party libraries</p></li>
+            </ul>
             <div class="fragment">
-              <img src="assets/browser-network.png" alt="browser-network"><br>
-              <small><p>Webpage download many scripts or resources in background</p></small>
+              <img src="assets/browser-network.png" alt="browser-network">
+              <br>
+              <small><p>Web page loaded many resources in background</p></small>
             </div>
           </section>
+
           <section>
-            <h2>Issue</h2>
+            <h2>New issues</h2>
             <ul>
               <li class="fragment"><p>Too many scripts download will cause network slow down</p></li>
-              <li class="fragment"><p >User always not use every functionality on website</p></li>
+              <li class="fragment"><p>User always not use every functionality on website</p></li>
               <li class="fragment"><p>Some libraries are so huge that will stuck webpage on loading</p></li>
-              <li class="fragment"><p>Some libraries are not very necessary when first time load</p></li>
+              <li class="fragment"><p>Also some libraries are unnecessary when first time load</p></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Solutions by script loading</h2>
+            <ul>
+              <li class="fragment"><p>Preloading</p></li>
+              <li class="fragment"><p>Load script on demand</p></li>
+              <li class="fragment"><p>Load script through async or defer</p></li>
             </ul>
             <aside class="notes">
-              For reducing bandwidth and make better user experience, many approachs have been proposed to address these issues.
+              Load script on demand or through async or defer can be lazy loading approach.
+              When these lazy loading technique meet with test coverage tool, new problem will arise.
             </aside>
           </section>
         </section>
 
         <section>
-          <h2>Demo</h2>
-          <p>A single page style web application</p>
-        </section>
-
-        <section>
-          <h2>Demo</h2>
-          <p>Test coverage with lazy load</p>
+          <section>
+            <h2>Test coverage with lazy loading</h2>
+          </section>
+          
+          <section>
+            <h2>Zero coverage</h2>
+            <p>Test coverage with lazy load</p>
+          </section>
         </section>
 
         <section>
           <section>
             <h2>Script loading approachs</h2>
-            <p>Demonstrate the script loading manner</p>
+            <p>Demonstrate the web script loading approach</p>
+          </section>
+
+          <section>
+            <h2>Script Loading - HTML Script</h2>
+            <br>
+            <pre><code data-trim contenteditable>
+&lt;script src=&quot;path/script.js&quot;&gt;&lt;/script&gt;
+            </code></pre>
+            <p>or</p>
+            <pre><code data-trim contenteditable>
+&lt;script&gt;
+  // Script content
+&lt;/script&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Script Loading - HTML Script (async/defer)</h2>
+            <br>
+            <pre><code data-trim contenteditable>
+&lt;script src=&quot;path/script.js&quot; async&gt;&lt;/script&gt;
+            </code></pre>
+            <p>or</p>
+            <pre><code data-trim contenteditable>
+&lt;script src=&quot;path/script.js&quot; defer&gt;&lt;/script&gt;
+            </code></pre>
           </section>
 
           <section>
             <h2>Script Loading - XHR</h2>
+            <br>
             <pre><code data-trim contenteditable>
 var xhr = new XMLHttpRequest();
-xhr.onload = function(responseScript) {
+xhr.onload = function (responseScript) {
   // Execute response script
   eval(responseScript);
 };
@@ -172,14 +236,16 @@ xhr.send();
           </section>
 
           <section>
-            <h2>Script Loading - Document.write()</h2>
+            <h2>Script Loading - Document.write</h2>
+            <br>
             <pre><code data-trim contenteditable>
 document.write('<script src="path/script.js"></script>');
             </code></pre>
           </section>
 
           <section>
-            <h2>Script Loading - Head.appendChild(script)</h2>
+            <h2>Script Loading - Head.appendChild</h2>
+            <br>
             <pre><code data-trim contenteditable>
 var head = document.getElementsByTagName('head')[0],
     script = document.createElement('script');
@@ -189,8 +255,9 @@ head.appendChild(script);
           </section>
 
           <section>
-            <h2>Script Loading - Function Wrapping</h2><br>
-            <p>Famous script loading API such as RequireJS, CommonJS use some syntax like:</p>
+            <h2>Script Loading - Function Wrapping</h2>
+            <br>
+            <p>Famous script loading API such as RequireJS, CommonJS use syntax like :</p>
             <pre><code data-trim contenteditable>
 require(["path/script.js"], function() {
   // This function is called after path/script.js has loaded.
@@ -201,19 +268,23 @@ require(["path/script.js"], function() {
 
         <section>
           <h2>Conclusion</h2>
+          <br>
           <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            <li class="fragment"><p>Web application is different from desktop application due to script loading</p></li>
+            <li class="fragment"><p>When test coverage meet with lazy loading will cause zero coverage issue</p></li>
+            <li class="fragment"><p>To address the issue, we list script loading approachs for analyzing</p></li>
+            <li class="fragment"><p>I'm going to contribute a JavaScript test coverage tool "blanket.js"</p></li>
           </ul>
         </section>
 
       </div>
 
     </div>
+    <span class="slidenumber"></span>
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
     <script>
 
@@ -242,6 +313,33 @@ require(["path/script.js"], function() {
           { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
+
+      function slidenumber(event){
+        var totalslides = document.querySelectorAll( '.reveal .slides section:not(.stack)' ).length;
+        var current_slide = 0;
+
+        var horizontal_slides = document.querySelectorAll( '.reveal .slides>section' );
+        for (var i = 0; i < event.indexh; i++) {
+          // get subslides
+          var subslides = horizontal_slides[i].querySelectorAll('section');
+
+          // if subslides.length is 0, add 1 for horizontal slide, else add subslides.length
+          current_slide += (subslides.length === 0) ? 1 : subslides.length;
+        }
+
+        current_slide += event.indexv+1;
+        return current_slide.toString()+" / "+totalslides.toString();
+      }
+
+      Reveal.addEventListener('slidechanged', function(event){
+        document.querySelector(".slidenumber").innerText=slidenumber(event);
+      });
+   
+      Reveal.addEventListener( 'ready', function( event ) {
+        $('<aside class="controls slidenumber" style="display: block; left: 10px; right: initial;bottom: -30px; text-align: center; color: rgb(47, 210, 233);"></aside>')
+          .text(slidenumber(event))
+          .appendTo('.reveal.center');
+      } );
 
     </script>
 
