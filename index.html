@@ -1,249 +1,249 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>Improve test coverage on web application</title>
+    <title>Improve test coverage on web application</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Ricky Chien">
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Ricky Chien">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-	<body>
+  <body>
 
-		<div class="reveal">
+    <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h2>Improve test coverage on web application</h2>
-					<p>
-						<small>Created by <a href="mailto:ricky060709@gamil.com">Ricky Chien</a></small>
-					</p>
-				</section>
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h2>Improve test coverage on web application</h2>
+          <p>
+            <small>Created by <a href="mailto:ricky060709@gamil.com">Ricky Chien</a></small>
+          </p>
+        </section>
 
-				<section>
-					<h2>Outline</h2>
-					<br>
-					<ol>
-						<li class="fragment">Test coverage</li><br>
-						<li class="fragment">Web application</li><br>
-						<li class="fragment">Demo - Web application</li><br>
-						<li class="fragment">Web application with script loading</li><br>
-						<li class="fragment">Demo - Test coverage with lazy load</li><br>
-						<li class="fragment">Script loading approachs</li><br>
-						<li class="fragment">Conclusion</li><br>
-					</ol>
+        <section>
+          <h2>Outline</h2>
+          <br>
+          <ol>
+            <li class="fragment">Test coverage</li><br>
+            <li class="fragment">Web application</li><br>
+            <li class="fragment">Demo - Web application</li><br>
+            <li class="fragment">Web application with script loading</li><br>
+            <li class="fragment">Demo - Test coverage with lazy load</li><br>
+            <li class="fragment">Script loading approachs</li><br>
+            <li class="fragment">Conclusion</li><br>
+          </ol>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+          <aside class="notes">
+            Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+          </aside>
+        </section>
 
-				<section>
-					<h2>Introduce to test coverage</h2>
-				</section>
+        <section>
+          <h2>Introduce to test coverage</h2>
+        </section>
 
-				<section>
-					<section>
-						<h2>Why we need test coverage?</h2>
-						<p class="fragment">For software quality, we always write tests to ensure our program can execute correctly</p>
-						<div class="fragment">
-							<img src="assets/unittests.png" alt="unit tests">
-							<small><p>A JavaScript unit tests example</p></small>
-						</div>
-					</section>
-					<section>
-						<p>If I have written a lof of test cases, how can I know what parts of the system functionality has been tested?</p>
-						<br>
-						<div class="fragment">
-							<ul>
-								<li>Module A</li>
-									<ul>
-										<li>contructor() tested: ✔</li>
-										<li>initialize() tested: ✔</li>
-										<li>getView() tested: ✔</li>
-										<li>getModel() tested: ✘</li>
-										<li>destory() tested: ✔</li>
-									</ul>
-								<li>Module B</li>
-									<ul>
-										<li>getValue() tested: ✔</li>
-										<li>connect() tested: ✘</li>
-									</ul>
-							</ul>
-						</div>
-					</section>
-					<section>
-						<p>That's it! Test coverage tool do it for us</p><br>
-						<div class="fragment">
-							<p>It reports what functionalitys have been tested</p>
-							<img src="assets/coverage-report.png" alt="coverage-report">
-						</div>
-					</section>
-					<section>
-						<p>Even show source code coverage details</p>
-						<img src="assets/coverage-report-details.png" alt="coverage-report-details">
-					</section>
-				</section>
+        <section>
+          <section>
+            <h2>Why we need test coverage?</h2>
+            <p class="fragment">For software quality, we always write tests to ensure our program can execute correctly</p>
+            <div class="fragment">
+              <img src="assets/unittests.png" alt="unit tests">
+              <small><p>A JavaScript unit tests example</p></small>
+            </div>
+          </section>
+          <section>
+            <p>If I have written a lof of test cases, how can I know what parts of the system functionality has been tested?</p>
+            <br>
+            <div class="fragment">
+              <ul>
+                <li>Module A</li>
+                  <ul>
+                    <li>contructor() tested: ✔</li>
+                    <li>initialize() tested: ✔</li>
+                    <li>getView() tested: ✔</li>
+                    <li>getModel() tested: ✘</li>
+                    <li>destory() tested: ✔</li>
+                  </ul>
+                <li>Module B</li>
+                  <ul>
+                    <li>getValue() tested: ✔</li>
+                    <li>connect() tested: ✘</li>
+                  </ul>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <p>That's it! Test coverage tool do it for us</p><br>
+            <div class="fragment">
+              <p>It reports what functionalitys have been tested</p>
+              <img src="assets/coverage-report.png" alt="coverage-report">
+            </div>
+          </section>
+          <section>
+            <p>Even show source code coverage details</p>
+            <img src="assets/coverage-report-details.png" alt="coverage-report-details">
+          </section>
+        </section>
 
-				<section>
-					<h2>Introduce to web application</h2>
-				</section>
+        <section>
+          <h2>Introduce to web application</h2>
+        </section>
 
-				<section>
-					<section>
-						<h2>Web application</h2>
-						<p>Nowadays, web is going to become more and more large and complicated</p>
-						<div class="fragment">
-							<img src="assets/gmail.png" alt="gmail" style="width: 680px; height: 400px;"><br>
-							<small><p>Gmail is a very good example</p></small>
-						</div>
-					</section>
-					<section>
-						<p>Web application composed by a lot of modules or third-party libraries</p>
-						<div class="fragment">
-							<img src="assets/browser-network.png" alt="browser-network"><br>
-							<small><p>Webpage download many scripts or resources in background</p></small>
-						</div>
-					</section>
-					<section>
-						<h2>Issue</h2>
-						<ul>
-							<li><p class="fragment">Too many scripts download will cause network slow down</p></li>
-							<li><p class="fragment">User always not use every functionality on website</p></li>
-							<li><p class="fragment">Some libraries are so huge that will stuck webpage on loading</p></li>
-							<li><p class="fragment">Some libraries are not very necessary when first time load</p></li>
-						</ul>
-						<aside class="notes">
-							For reducing bandwidth and make better user experience, many approachs have been proposed to address these issues.
-						</aside>
-					</section>
-				</section>
+        <section>
+          <section>
+            <h2>Web application</h2>
+            <p>Nowadays, web is going to become more and more large and complicated</p>
+            <div class="fragment">
+              <img src="assets/gmail.png" alt="gmail" style="width: 680px; height: 400px;"><br>
+              <small><p>Gmail is a very good example</p></small>
+            </div>
+          </section>
+          <section>
+            <p>Web application composed by a lot of modules or third-party libraries</p>
+            <div class="fragment">
+              <img src="assets/browser-network.png" alt="browser-network"><br>
+              <small><p>Webpage download many scripts or resources in background</p></small>
+            </div>
+          </section>
+          <section>
+            <h2>Issue</h2>
+            <ul>
+              <li class="fragment"><p>Too many scripts download will cause network slow down</p></li>
+              <li class="fragment"><p >User always not use every functionality on website</p></li>
+              <li class="fragment"><p>Some libraries are so huge that will stuck webpage on loading</p></li>
+              <li class="fragment"><p>Some libraries are not very necessary when first time load</p></li>
+            </ul>
+            <aside class="notes">
+              For reducing bandwidth and make better user experience, many approachs have been proposed to address these issues.
+            </aside>
+          </section>
+        </section>
 
-				<section>
-					<h2>Demo</h2>
-					<p>A single page style web application</p>
-				</section>
+        <section>
+          <h2>Demo</h2>
+          <p>A single page style web application</p>
+        </section>
 
-				<section>
-					<h2>Demo</h2>
-					<p>Test coverage with lazy load</p>
-				</section>
+        <section>
+          <h2>Demo</h2>
+          <p>Test coverage with lazy load</p>
+        </section>
 
-				<section>
-					<section>
-						<h2>Script loading approachs</h2>
-						<p>Demonstrate the script loading manner</p>
-					</section>
+        <section>
+          <section>
+            <h2>Script loading approachs</h2>
+            <p>Demonstrate the script loading manner</p>
+          </section>
 
-					<section>
-						<h2>Script Loading - XHR</h2>
-						<pre><code data-trim contenteditable>
+          <section>
+            <h2>Script Loading - XHR</h2>
+            <pre><code data-trim contenteditable>
 var xhr = new XMLHttpRequest();
 xhr.onload = function(responseScript) {
-	// execute response script 
-	eval(responseScript);
+  // Execute response script
+  eval(responseScript);
 };
 xhr.open('GET', 'URL');
 xhr.send();
-						</code></pre>
-					</section>
+            </code></pre>
+          </section>
 
-					<section>
-						<h2>Script Loading - Document.write()</h2>
-						<pre><code data-trim contenteditable>
+          <section>
+            <h2>Script Loading - Document.write()</h2>
+            <pre><code data-trim contenteditable>
 document.write('<script src="path/script.js"></script>');
-						</code></pre>
-					</section>
+            </code></pre>
+          </section>
 
-					<section>
-						<h2>Script Loading - Head.appendChild(script)</h2>
-						<pre><code data-trim contenteditable>
+          <section>
+            <h2>Script Loading - Head.appendChild(script)</h2>
+            <pre><code data-trim contenteditable>
 var head = document.getElementsByTagName('head')[0],
     script = document.createElement('script');
 script.src = url;
 head.appendChild(script);
-						</code></pre>
-					</section>
+            </code></pre>
+          </section>
 
-					<section>
-						<h2>Script Loading - Function Wrapping</h2><br>
-						<p>Famous script loading API such as RequireJS, CommonJS use some syntax like:</p>
-						<pre><code data-trim contenteditable>
+          <section>
+            <h2>Script Loading - Function Wrapping</h2><br>
+            <p>Famous script loading API such as RequireJS, CommonJS use some syntax like:</p>
+            <pre><code data-trim contenteditable>
 require(["path/script.js"], function() {
-  // This function is called after some / script.js has loaded.
+  // This function is called after path/script.js has loaded.
 });
-						</code></pre>
-					</section>
-				</section>
+            </code></pre>
+          </section>
+        </section>
 
-				<section>
-					<h2>Conclusion</h2>
-					<ul>
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-					</ul>
-				</section>
+        <section>
+          <h2>Conclusion</h2>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </section>
 
-			</div>
+      </div>
 
-		</div>
+    </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
 
-		<script>
+    <script>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
 
-		</script>
+    </script>
 
-	</body>
+  </body>
 </html>
