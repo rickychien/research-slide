@@ -187,7 +187,55 @@
           
           <section>
             <h2>Zero coverage</h2>
-            <p>Test coverage with lazy load</p>
+            <br>
+            <div class="fragment">
+              <ul>
+                <li><p>Take firefox OS Gaia for an example. Email app has 27 source scripts, but it just show one file on coverage report</p></li>
+              </ul>
+              <img src="assets/zero-coverage.png">
+            </div>
+          </section>
+
+          <section>
+            <h2>Analyze the reasons</h2>
+            <br>
+            <p class="fragment">Because coverage tool only can detect script in static</p>
+            <br>
+            <p class="fragment" style="color: #99CCFF;">Take the blanket.js as an example</p>
+            <div class="fragment">
+              <pre><code data-trim contenteditable>
+&lt;script src=&quot;path/script.js&quot; data-cover&gt;&lt;/script&gt;
+              </code></pre>
+              <small><p>It detects "data-cover" attribute and instruments it's coverage</p></small>
+            </div>
+            <br>
+            <div class="fragment">
+              <pre><code data-trim contenteditable>
+&lt;script src=&quot;blanket.js&quot; data-cover-only=&quot;src/&quot;&gt;&lt;/script&gt;
+              </code></pre>
+              <small><p>Or specify "data-cover-only" when loading blanket.js</p></small>
+            </div>
+          </section>
+
+          <section>
+            <h2>Analyze the reasons</h2>
+            <br>
+            <ul>
+              <li class="fragment"><p>Web coverage tools only setup instrument scripts on beginning</p></li>
+              <li class="fragment"><p>Load script dynamically through javascript is so hard to detect</p></li>
+            </ul>
+            <div class="fragment">
+              <pre><code data-trim contenteditable>
+var xhr = new XMLHttpRequest();
+xhr.onload = function (responseScript) {
+  // Execute response script
+  eval(responseScript);
+};
+xhr.open('GET', 'URL');
+xhr.send();
+              </code></pre>
+              <small><p>Ajax is a dynamic way to load scripts</p></small>
+            </div>
           </section>
         </section>
 
@@ -224,7 +272,7 @@
           </section>
 
           <section>
-            <h2>Script Loading - XHR</h2>
+            <h2>Script Loading - XHR (Ajax)</h2>
             <br>
             <pre><code data-trim contenteditable>
 var xhr = new XMLHttpRequest();
