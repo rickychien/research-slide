@@ -146,11 +146,13 @@
             <ul>
               <li class="fragment"><p>Developer wants to distribute JavaScript files to modules</p></li>
               <li class="fragment"><p>Web page is composed by modules or third-party libraries</p></li>
+              <br>
+              <p class="fragment" style="color: #99CCFF;">Web application is different with desktop application here</p>
             </ul>
             <div class="fragment">
               <img src="assets/browser-network.png" alt="browser-network">
               <br>
-              <small><p>Web page loaded many resources in background</p></small>
+              <small><p>Web application load resources in background, but desktop application doesn't do this</p></small>
             </div>
           </section>
 
@@ -284,7 +286,6 @@ require(["path/script.js"], function() {
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
     <script>
 
@@ -314,8 +315,8 @@ require(["path/script.js"], function() {
         ]
       });
 
-      function slidenumber(event){
-        var totalslides = document.querySelectorAll( '.reveal .slides section:not(.stack)' ).length;
+      function slidenumber(event) {
+        //var totalslides = document.querySelectorAll( '.reveal .slides section:not(.stack)' ).length;
         var current_slide = 0;
 
         var horizontal_slides = document.querySelectorAll( '.reveal .slides>section' );
@@ -327,19 +328,22 @@ require(["path/script.js"], function() {
           current_slide += (subslides.length === 0) ? 1 : subslides.length;
         }
 
-        current_slide += event.indexv+1;
-        return current_slide.toString()+" / "+totalslides.toString();
+        current_slide += event.indexv + 1;
+        return current_slide.toString(); // + " / " + totalslides.toString();
       }
 
-      Reveal.addEventListener('slidechanged', function(event){
-        document.querySelector(".slidenumber").innerText=slidenumber(event);
+      Reveal.addEventListener('slidechanged', function(event) {
+        document.querySelector('.slidenumber').innerHTML = slidenumber(event);
       });
    
-      Reveal.addEventListener( 'ready', function( event ) {
-        $('<aside class="controls slidenumber" style="display: block; left: 10px; right: initial;bottom: -30px; text-align: center; color: rgb(47, 210, 233);"></aside>')
-          .text(slidenumber(event))
-          .appendTo('.reveal.center');
-      } );
+      Reveal.addEventListener('ready', function(event) {
+        var div = document.querySelector('.reveal.center'),
+            aside = document.createElement('aside');
+        aside.setAttribute('class', 'controls slidenumber');
+        aside.setAttribute('style', 'display: block; left: 10px; right: initial; bottom: -30px; text-align: center; color: rgb(47, 210, 233);');
+        aside.innerHTML = slidenumber(event);
+        div.appendChild(aside);
+      });
 
     </script>
 
