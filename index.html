@@ -70,34 +70,11 @@
           </section>
 
           <section>
-            <p>If I have written a lof of test cases, how can I know what parts of the system functionality has been tested?</p>
-            <br>
+            <ul>
+              <li class="fragment"><p>If I have written a lof of test cases, how can I know what parts of the system functionality has been tested?</p></li>
+              <li class="fragment"><p>Test coverage tool do it for us</p></li>
+            </ul>
             <div class="fragment">
-              <p style="color: #99CCFF;"><em>Is possible to have a statistics like...</em></p>
-              <br>
-              <ul>
-                <li style="color: #99CCFF;">Module A</li>
-                  <ul>
-                    <li>contructor() has been tested: <i style="color: #00CC66;">✔</i></li>
-                    <li>initialize() has been tested: <i style="color: #00CC66;">✔</i></li>
-                    <li>getView() has been tested: <i style="color: #00CC66;">✔</i></li>
-                    <li>getModel() has been tested: <i style="color: #FF0000;">✘</i></li>
-                    <li>destory() has been tested: <i style="color: #00CC66;">✔</i></li>
-                  </ul>
-                <li style="color: #99CCFF;">Module B</li>
-                  <ul>
-                    <li>getValue() has been tested: <i style="color: #00CC66;">✔</i></li>
-                    <li>connect() has been tested: <i style="color: #FF0000;">✘</i></li>
-                  </ul>
-              </ul>
-            </div>
-          </section>
-
-          <section>
-            <p>That's it! Test coverage tool do it for us</p>
-            <br>
-            <div class="fragment">
-              <p>It reports what functionalitys have been tested</p>
               <img src="assets/coverage-report.png" alt="coverage-report">
               <small><p>Blanket.js - JavaScript test coverage tool</p></small>
             </div>
@@ -132,7 +109,7 @@
           <section>
             <h2>To build a complicated web application</h2>
             <ul>
-              <li class="fragment"><p>Developer wants to distribute JavaScript files to modules</p></li>
+              <li class="fragment"><p>Developers want to distribute JavaScript files to modules</p></li>
               <li class="fragment"><p>Web page is composed by modules or third-party libraries</p></li>
               <br>
               <p class="fragment" style="color: #99CCFF;">Web application is different with desktop application here</p>
@@ -140,7 +117,7 @@
             <div class="fragment">
               <img src="assets/browser-network.png" alt="browser-network">
               <br>
-              <small><p>Web application load resources in background, but desktop application doesn't do this</p></small>
+              <small><p>Web application load resources in background, but desktop application doesn't</p></small>
             </div>
           </section>
 
@@ -151,7 +128,7 @@
 
           <section>
             <video src="https://dl.dropboxusercontent.com/s/j5aj39h64dp8okr/webapp-demo.mov?dl=1&token_hash=AAHtzNPk4Qt_lEZBqsYYATHsfz_4Uny-JxdYDojMztkkKw" controls></video>
-            <aside class="note">
+            <aside class="notes">
               Download link: https://db.tt/L6nZqq9M
             </aside>
           </section>
@@ -189,7 +166,7 @@
             <h2>Zero coverage</h2>
             <div class="fragment">
               <ul>
-                <li><p>Take firefox OS Gaia for an example. Email app has 27 source scripts, but it just show one file on coverage report</p></li>
+                <li><p>Take firefox OS Gaia for an example. Email app has 27 source scripts, but coverage report just show one file</p></li>
               </ul>
               <img src="assets/zero-coverage.png">
             </div>
@@ -197,7 +174,7 @@
 
           <section>
             <h2>Analyze the reasons</h2>
-            <p class="fragment">Because coverage tool only can detect script in static</p>
+            <p class="fragment">Because coverage tool only can detect script in static (HTML)</p>
             <br>
             <p class="fragment" style="color: #99CCFF;">Take the blanket.js as an example</p>
             <div class="fragment">
