@@ -39,7 +39,7 @@
         <section>
           <h2 style="text-overflow: normal;">Improve test coverage on web application</h2>
           <p>
-            <small>Created by <a href="mailto:ricky060709@gamil.com">Ricky Chien</a></small>
+            <small>Created by <a href="mailto:ricky060709@gmail.com">Ricky Chien</a></small>
           </p>
         </section>
 
@@ -115,17 +115,7 @@
           </section>
 
           <section>
-            <h2>Demo</h2>
-            <p>A single page style web application</p>
-          </section>
-
-          <section>
-            <video src="assets/webapp-demo.mov" controls></video>
-          </section>
-
-          <section>
             <h2>Web is changing</h2>
-            <br>
             <ul>
               <li class="fragment"><p>Nowadays, web is going to become more complicated</p></li>
               <li class="fragment"><p>Client (Browser) can take more job for server</p></li>
@@ -133,14 +123,14 @@
             </ul>
             <div class="fragment">
               <img src="assets/gmail.png" alt="gmail" style="width: 680px; height: 400px;">
-              <br>
-              <small><p>Gmail work just like a desktop application</p></small>
+              <aside class="notes">
+                Gmail work just like a desktop application
+              </aside>
             </div>
           </section>
 
           <section>
             <h2>To build a complicated web application</h2>
-            <br>
             <ul>
               <li class="fragment"><p>Developer wants to distribute JavaScript files to modules</p></li>
               <li class="fragment"><p>Web page is composed by modules or third-party libraries</p></li>
@@ -152,6 +142,15 @@
               <br>
               <small><p>Web application load resources in background, but desktop application doesn't do this</p></small>
             </div>
+          </section>
+
+          <section>
+            <h2>Demo</h2>
+            <p>A single page style web application</p>
+          </section>
+
+          <section>
+            <video src="assets/webapp-demo.mov" controls></video>
           </section>
 
           <section>
@@ -185,7 +184,6 @@
           
           <section>
             <h2>Zero coverage</h2>
-            <br>
             <div class="fragment">
               <ul>
                 <li><p>Take firefox OS Gaia for an example. Email app has 27 source scripts, but it just show one file on coverage report</p></li>
@@ -196,7 +194,6 @@
 
           <section>
             <h2>Analyze the reasons</h2>
-            <br>
             <p class="fragment">Because coverage tool only can detect script in static</p>
             <br>
             <p class="fragment" style="color: #99CCFF;">Take the blanket.js as an example</p>
@@ -217,7 +214,6 @@
 
           <section>
             <h2>Analyze the reasons</h2>
-            <br>
             <ul>
               <li class="fragment"><p>Web coverage tools only setup instrument scripts on beginning</p></li>
               <li class="fragment"><p>Load script dynamically through javascript is so hard to detect</p></li>
