@@ -161,7 +161,7 @@
           <section>
             <h2>Test coverage with lazy loading</h2>
           </section>
-          
+
           <section>
             <h2>Zero coverage</h2>
             <div class="fragment">
@@ -174,28 +174,8 @@
 
           <section>
             <h2>Analyze the causes</h2>
-            <p class="fragment">Because coverage tool only can detect script in static (HTML)</p>
-            <br>
-            <p class="fragment" style="color: #99CCFF;">Take the blanket.js as an example</p>
-            <div class="fragment">
-              <pre><code data-trim contenteditable>
-&lt;script src=&quot;path/script.js&quot; data-cover&gt;&lt;/script&gt;
-              </code></pre>
-              <small><p>It detects "data-cover" attribute and instrumentations it's coverage</p></small>
-            </div>
-            <br>
-            <div class="fragment">
-              <pre><code data-trim contenteditable>
-&lt;script src=&quot;blanket.js&quot; data-cover-only=&quot;src/&quot;&gt;&lt;/script&gt;
-              </code></pre>
-              <small><p>Or specify "data-cover-only" when loading blanket.js</p></small>
-            </div>
-          </section>
-
-          <section>
-            <h2>Analyze the causes</h2>
             <ul>
-              <li class="fragment"><p>Web coverage tools only setup instrumentation scripts on beginning</p></li>
+              <li class="fragment"><p>These coverage tool setup instrumentation scripts on beginning</p></li>
               <li class="fragment"><p>Load script dynamically through javascript is so hard to detect</p></li>
             </ul>
             <div class="fragment">
@@ -231,6 +211,8 @@ xhr.send();
   // Script content
 &lt;/script&gt;
             </code></pre>
+            <br>
+            <p style="color: #ff4629;">General coverage tool can detect this loading style</p>
           </section>
 
           <section>
@@ -243,6 +225,8 @@ xhr.send();
             <pre><code data-trim contenteditable>
 &lt;script src=&quot;path/script.js&quot; defer&gt;&lt;/script&gt;
             </code></pre>
+            <br>
+            <p style="color: #ff4629;">General coverage tool can detect this loading style</p>
           </section>
 
           <section>
@@ -265,28 +249,93 @@ xhr.send();
             <pre><code data-trim contenteditable>
 document.write('<script src="path/script.js"></script>');
             </code></pre>
+            <br>
+            <p style="color: #ff4629;">When looking at reaching the very best performance for your site, this is undesirable.</p>
           </section>
 
           <section>
-            <h2>Script Loading - Head.appendChild</h2>
+            <h2>Script Loading - DOM modification API</h2>
             <br>
+            <p>appendChild / insertBefore / replaceChild</p>
             <pre><code data-trim contenteditable>
-var head = document.getElementsByTagName('head')[0],
-    script = document.createElement('script');
+var script = document.createElement("script");
 script.src = url;
-head.appendChild(script);
+
+document.head.appendChild(script);
+parentNode.insertBefore(script, node);
+parentNode.replaceChild(script, oldNode);
             </code></pre>
           </section>
 
           <section>
             <h2>Script Loading - Function Wrapping</h2>
             <br>
-            <p>Famous script loading API such as RequireJS, CommonJS use syntax like :</p>
+            <p>Famous module loader library such as RequireJS using syntax :</p>
             <pre><code data-trim contenteditable>
 require(["path/script.js"], function() {
   // This function is called after path/script.js has loaded.
 });
             </code></pre>
+            <br>
+            <p style="color: #ff4629;">Mechanism behind is DOM modification API or XHR to load script</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Solution</h2>
+            <br>
+            <ul>
+              <li class="fragment"><p>Most of dynamic loading through DOM modification API and XHR.</p></li>
+              <li class="fragment"><p>We can hack these DOM modification API and XHR.</p></li>
+              <li class="fragment"><p>Hack maybe dangerous. Have to simulate original event dispatch behavior.</p></li>
+              <li class="fragment"><p>A lot of tests are needed to ensure it doesn't break.</p></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Modify DOM API</h2>
+            <p>Overwrite original appendChild / insertBefore / replaceChild</p>
+            <pre><code data-trim contenteditable>
+Element.prototype.appendChild = function(newElement) {
+    // Do our hack here
+    return originalAppendChild.apply(this, args); // invoke original method
+};
+
+Element.prototype.insertBefore = function(newElement, referenceElement) {
+    // Do our hack here
+    return originalInsertBefore.apply(this, args); // invoke original method
+};
+
+Element.prototype.replaceChild = function(newElement, oldElement) {
+    // Do our hack here
+    return originalReplaceChild.apply(this, args); // invoke original method
+};
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Modify XHR</h2>
+            <p>Overwrite original open method in XHR object</p>
+            <pre><code data-trim contenteditable>
+XMLHttpRequest.prototype.open = function(method, url) {
+  // Do our hack here
+  return originalXHROpen.apply(this, args); // invoke original method
+};
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Mechanism</h2>
+            <br>
+            <p>Picture here</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Evaluate</h2>
+            <img></img>
           </section>
         </section>
 
@@ -357,7 +406,7 @@ require(["path/script.js"], function() {
       Reveal.addEventListener('slidechanged', function(event) {
         document.querySelector('.slidenumber').innerHTML = slidenumber(event);
       });
-   
+
       Reveal.addEventListener('ready', function(event) {
         var div = document.querySelector('.reveal.center'),
             aside = document.createElement('aside');
