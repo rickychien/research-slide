@@ -47,11 +47,13 @@
           <h2>Outline</h2>
           <br>
           <ol>
-            <li class="fragment">Test coverage</li><br>
-            <li class="fragment">Web application</li><br>
-            <li class="fragment">Test coverage with lazy load</li><br>
-            <li class="fragment">Script loading approachs</li><br>
-            <li class="fragment">Conclusion</li><br>
+            <li class="fragment">Test coverage</li>
+            <li class="fragment">Web application</li>
+            <li class="fragment">Test coverage with dynamic loading</li>
+            <li class="fragment">Script loading approachs</li>
+            <li class="fragment">Research Methods</li>
+            <li class="fragment">Evaluation</li>
+            <li class="fragment">Conclusion</li>
           </ol>
         </section>
 
@@ -122,18 +124,6 @@
           </section>
 
           <section>
-            <h2>Demo</h2>
-            <p>A single page style web application</p>
-          </section>
-
-          <section>
-            <video src="https://dl.dropboxusercontent.com/s/j5aj39h64dp8okr/webapp-demo.mov?dl=1&token_hash=AAHtzNPk4Qt_lEZBqsYYATHsfz_4Uny-JxdYDojMztkkKw" controls></video>
-            <aside class="notes">
-              Download link: https://db.tt/L6nZqq9M
-            </aside>
-          </section>
-
-          <section>
             <h2>New issues</h2>
             <ul>
               <li class="fragment"><p>Too many scripts download will cause network slow down</p></li>
@@ -151,24 +141,30 @@
               <li class="fragment"><p>Load script through async or defer</p></li>
             </ul>
             <aside class="notes">
-              Load script on demand or through async or defer can be lazy loading approach.
-              When these lazy loading technique meet with test coverage tool, new problem will arise.
+              Load script on demand or through async or defer can be dynamic loading approach.
+              When these dynamic loading technique meet with test coverage tool, new problem will arise.
             </aside>
           </section>
         </section>
 
         <section>
           <section>
-            <h2>Test coverage with lazy loading</h2>
+            <h2>Test coverage with dynamic loading</h2>
           </section>
 
           <section>
             <h2>Zero coverage</h2>
             <div class="fragment">
               <ul>
-                <li><p>Take firefox OS Gaia for an example. Email app has 27 source scripts, but it only covered one file</p></li>
+                <li class="fragment">
+                  <p>Firefox OS email app has 27 sources, but only covered one file</p>
+                  <img src="assets/zero-coverage.png">
+                </li>
+                <li class="fragment">
+                  <p>We demonstrate prevalent way of dynamic loading on web</p>
+                  <a href="http://rickychien.github.io/lazyload-sample/old/">Lazyload-sample website</a>
+                </li>
               </ul>
-              <img src="assets/zero-coverage.png">
             </div>
           </section>
 
@@ -276,12 +272,23 @@ require(["path/script.js"], function() {
   // This function is called after path/script.js has loaded.
 });
             </code></pre>
-            <br>
-            <p style="color: #ff4629;">Mechanism behind is DOM modification API or XHR to load script</p>
+          </section>
+
+          <section>
+            <p style="font-size: 50px; color: #ff4629;">Mechanism behind is DOM modification API or XHR API to load script</p>
           </section>
         </section>
 
         <section>
+          <section>
+            <h2>Research Methods</h2>
+          </section>
+
+          <section>
+            <h2>Code Coverage Mechanism</h2>
+            <img src="assets/code-coverage-workflow.png"></img>
+          </section>
+
           <section>
             <h2>Solution</h2>
             <br>
@@ -294,7 +301,12 @@ require(["path/script.js"], function() {
           </section>
 
           <section>
-            <h2>Modify DOM API</h2>
+            <h2>Solution Mechanism</h2>
+            <img src="assets/solution-mechanism.png"></img>
+          </section>
+
+          <section>
+            <h2>DOM modification API</h2>
             <p>Overwrite original appendChild / insertBefore / replaceChild</p>
             <pre><code data-trim contenteditable>
 Element.prototype.appendChild = function(newElement) {
@@ -315,7 +327,7 @@ Element.prototype.replaceChild = function(newElement, oldElement) {
           </section>
 
           <section>
-            <h2>Modify XHR</h2>
+            <h2>XHR API</h2>
             <p>Overwrite original open method in XHR object</p>
             <pre><code data-trim contenteditable>
 XMLHttpRequest.prototype.open = function(method, url) {
@@ -324,29 +336,28 @@ XMLHttpRequest.prototype.open = function(method, url) {
 };
             </code></pre>
           </section>
-
-          <section>
-            <h2>Mechanism</h2>
-            <br>
-            <p>Picture here</p>
-          </section>
         </section>
 
         <section>
           <section>
-            <h2>Evaluate</h2>
-            <img></img>
+            <h2>Evaluation</h2>
+            <p>A simple website for demo dynamic loading mechanism</p>
+            <br>
+            <ul>
+              <li><a href="http://rickychien.github.io/lazyload-sample/old/">Without support lazyload</a></li>
+              <li><a href="http://rickychien.github.io/lazyload-sample/new/">With support lazyload</a></li>
+            </ul>
           </section>
         </section>
 
         <section>
           <h2>Conclusion</h2>
-          <br>
           <ul>
-            <li class="fragment"><p>Web application is different from desktop application due to script loading</p></li>
-            <li class="fragment"><p>When test coverage meet with lazy loading will cause zero coverage issue</p></li>
-            <li class="fragment"><p>To address the issue, we list script loading approachs for analyzing</p></li>
-            <li class="fragment"><p>I'm going to contribute a JavaScript test coverage tool "blanket.js"</p></li>
+            <li class="fragment"><p>When test coverage meet with dynamic loading will cause zero coverage.</p></li>
+            <li class="fragment"><p>Survey prevalent method of dynamic loading on web.</p></li>
+            <li class="fragment"><p>Propose a solution to hack DOM API for addressing zero coverage.</p></li>
+            <li class="fragment"><p>New mechanism succeed. Dynamic loading scripts have been covered.</p></li>
+            <li class="fragment"><p>Need more testimonies to proof other coverage tools do not have such feature.</p></li>
           </ul>
         </section>
 
