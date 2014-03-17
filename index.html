@@ -205,7 +205,7 @@ xhr.send();
 &lt;/script&gt;
             </code></pre>
             <br>
-            <p style="color: #ff4629;">General coverage tool can detect this loading style</p>
+            <p style="color: #66CDAA;">Support</p>
           </section>
 
           <section>
@@ -219,7 +219,7 @@ xhr.send();
 &lt;script src=&quot;path/script.js&quot; defer&gt;&lt;/script&gt;
             </code></pre>
             <br>
-            <p style="color: #ff4629;">General coverage tool can detect this loading style</p>
+            <p style="color: #66CDAA;">Support</p>
           </section>
 
           <section>
@@ -234,6 +234,8 @@ xhr.onload = function (responseScript) {
 xhr.open('GET', 'URL');
 xhr.send();
             </code></pre>
+            <br>
+            <p style="color: #ff4629;">Need to support</p>
           </section>
 
           <section>
@@ -243,7 +245,7 @@ xhr.send();
 document.write('<script src="path/script.js"></script>');
             </code></pre>
             <br>
-            <p style="color: #ff4629;">When looking at reaching the very best performance for your site, this is undesirable.</p>
+            <p style="color: #66CDAA;">Bad performance. Won't support</p>
           </section>
 
           <section>
@@ -258,6 +260,8 @@ document.head.appendChild(script);
 parentNode.insertBefore(script, node);
 parentNode.replaceChild(script, oldNode);
             </code></pre>
+            <br>
+            <p style="color: #ff4629;">Need to support</p>
           </section>
 
           <section>
@@ -269,10 +273,12 @@ require(["path/script.js"], function() {
   // This function is called after path/script.js has loaded.
 });
             </code></pre>
+            <br>
+            <p style="color: #ff4629;">Need to support</p>
           </section>
 
           <section>
-            <p style="font-size: 50px; color: #ff4629;">Mechanism behind is DOM modification API or XHR API to load script</p>
+            <p style="font-size: 50px; color: #ff4629;">Mechanism behind is native DOM modification API or XHR API to load script</p>
           </section>
         </section>
 
@@ -290,9 +296,8 @@ require(["path/script.js"], function() {
             <h2>Solution</h2>
             <br>
             <ul>
-              <li class="fragment"><p>Most of dynamic loading through DOM modification API and XHR.</p></li>
-              <li class="fragment"><p>We can hack these DOM modification API and XHR.</p></li>
-              <li class="fragment"><p>Hack maybe dangerous. Have to simulate original event dispatch behavior.</p></li>
+              <li class="fragment"><p>Most of dynamic loading approachs are through DOM modification API and XHR.</p></li>
+              <li class="fragment"><p>We can hack these native DOM modification API and XHR.</p></li>
               <li class="fragment"><p>A lot of tests are needed to ensure it doesn't break.</p></li>
             </ul>
           </section>
