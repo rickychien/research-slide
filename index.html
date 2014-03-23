@@ -55,14 +55,6 @@
             <li>Achievement</li>
             <li>Conclusion</li>
           </ol>
-          <aside class="notes">
-            Here is the outline today.
-            First, introducing why is test coverage.
-            Second, introducing nowadays web application
-            Third, What will happened if we put both together.
-            Then, analyze script loading approachs and describe my solution.
-            In the end, I will give an achievement up to now.
-          </aside>
         </section>
 
         <section>
@@ -107,9 +99,6 @@
             </ul>
             <div class="fragment">
               <img src="assets/gmail.png" alt="gmail" style="width: 680px; height: 400px;">
-              <aside class="notes">
-                Gmail work just like a desktop application
-              </aside>
             </div>
           </section>
 
@@ -119,36 +108,32 @@
               <li class="fragment"><p>Developers want to distribute JavaScript files to modules</p></li>
               <li class="fragment"><p>Web page is composed by modules or third-party libraries</p></li>
               <br>
-              <p class="fragment" style="color: #99CCFF;">Web application is different with desktop application here</p>
+              <p class="fragment" style="color: #99CCFF;">Web application have to download resources, but desktop application doesn't</p>
             </ul>
             <div class="fragment">
               <img src="assets/browser-network.png" alt="browser-network">
-              <br>
-              <small><p>Web application load resources in background, but desktop application doesn't</p></small>
             </div>
           </section>
 
           <section>
             <h2>New issues</h2>
             <ul>
-              <li class="fragment"><p>Too many scripts download will cause network slow down</p></li>
-              <li class="fragment"><p>User always not use every functionality on website</p></li>
-              <li class="fragment"><p>Some libraries are so huge that will stuck webpage on loading</p></li>
-              <li class="fragment"><p>Some libraries are unnecessary when first time load</p></li>
+              <li class="fragment"><p>Too much requests will slow network down</p></li>
+              <li class="fragment"><p>User do not use all functionalities every times</p></li>
+              <li class="fragment"><p>Some libraries are so huge that may block loading</p></li>
+              <li class="fragment"><p>Some libraries are unnecessary to load in the beginning</p></li>
             </ul>
+            <br><br>
+            <h3 class="fragment" style="color: #ff4629;">Solutions by dynamic loading</h3>
           </section>
 
           <section>
-            <h2>Solutions by script loading</h2>
+            <h2>Dynamic loading</h2>
             <ul>
-              <li class="fragment"><p>Preloading</p></li>
-              <li class="fragment"><p>Load on demand</p></li>
-              <li class="fragment"><p>Load with async or defer</p></li>
+              <li><p>Using javascript to load javascript in run-time</p></li>
+              <li><p>Add conditions to determine when will need to load javascript</p></li>
             </ul>
-            <aside class="notes">
-              Load script on demand or through async or defer can be dynamic loading approach.
-              When these dynamic loading technique meet with test coverage tool, new problem will arise.
-            </aside>
+            <img src="assets/dynamic-loading.png" alt="dynamic-loading">
           </section>
         </section>
 
@@ -160,41 +145,31 @@
           <section>
             <h2>Zero coverage</h2>
             <div class="fragment">
-              <ul>
-                <li class="fragment">
-                  <p>Firefox OS email app has 27 sources, but only covered one file</p>
-                  <img src="assets/zero-coverage.png">
-                </li>
-                <li class="fragment">
-                  <p>We demonstrate prevalent way of dynamic loading on web</p>
-                  <a href="http://rickychien.github.io/lazyload-sample/old/">Lazyload-sample website</a>
-                </li>
-              </ul>
+              <p>Firefox OS email app has 27 module files, but only covered one</p>
+              <img src="assets/zero-coverage.png">
             </div>
           </section>
 
           <section>
-            <h2>Analyze the causes</h2>
-            <ul>
-              <li class="fragment"><p>These coverage tool setup instrumentation scripts on beginning</p></li>
-              <li class="fragment"><p>Load script dynamically through javascript is so hard to detect</p></li>
-            </ul>
+            <h2>Zero coverage</h2>
             <div class="fragment">
-              <pre><code data-trim contenteditable>
-var xhr = new XMLHttpRequest();
-xhr.onload = function (responseScript) {
-  // Execute response script
-  eval(responseScript);
-};
-xhr.open('GET', 'URL');
-xhr.send();
-              </code></pre>
-              <small><p>Ajax is a dynamic way to load scripts</p></small>
+              <p>We demonstrate prevalent web dynamic loading scheme</p>
+              <img src="assets/lazyload-sample.png" alt="lazyload-sample">
+              <a href="http://rickychien.github.io/lazyload-sample/old/">Lazyload-sample</a>
             </div>
           </section>
         </section>
 
         <section>
+          <section>
+            <h2>Analysis</h2>
+          </section>
+
+          <section>
+            <h2>Code Coverage Mechanism</h2>
+            <img src="assets/code-coverage-workflow.png"></img>
+          </section>
+
           <section>
             <h2>Analysis of Script loading</h2>
             <p>Demonstrate the web script loading approachs</p>
@@ -206,28 +181,12 @@ xhr.send();
             <pre><code data-trim contenteditable>
 &lt;script src=&quot;path/script.js&quot;&gt;&lt;/script&gt;
             </code></pre>
-            <p>or</p>
-            <pre><code data-trim contenteditable>
-&lt;script&gt;
-  // Script content
-&lt;/script&gt;
-            </code></pre>
-            <br>
-            <p style="color: #66CDAA;">Support</p>
-          </section>
-
-          <section>
-            <h2>Script Loading - HTML Script (async/defer)</h2>
-            <br>
             <pre><code data-trim contenteditable>
 &lt;script src=&quot;path/script.js&quot; async&gt;&lt;/script&gt;
             </code></pre>
-            <p>or</p>
             <pre><code data-trim contenteditable>
 &lt;script src=&quot;path/script.js&quot; defer&gt;&lt;/script&gt;
             </code></pre>
-            <br>
-            <p style="color: #66CDAA;">Support</p>
           </section>
 
           <section>
@@ -242,8 +201,6 @@ xhr.onload = function (responseScript) {
 xhr.open('GET', 'URL');
 xhr.send();
             </code></pre>
-            <br>
-            <p style="color: #ff4629;">Need to support</p>
           </section>
 
           <section>
@@ -252,8 +209,6 @@ xhr.send();
             <pre><code data-trim contenteditable>
 document.write('<script src="path/script.js"></script>');
             </code></pre>
-            <br>
-            <p style="color: #66CDAA;">Bad performance. Won't support</p>
           </section>
 
           <section>
@@ -268,8 +223,6 @@ document.head.appendChild(script);
 parentNode.insertBefore(script, node);
 parentNode.replaceChild(script, oldNode);
             </code></pre>
-            <br>
-            <p style="color: #ff4629;">Need to support</p>
           </section>
 
           <section>
@@ -281,8 +234,11 @@ require(["path/script.js"], function() {
   // This function is called after path/script.js has loaded.
 });
             </code></pre>
-            <br>
-            <p style="color: #ff4629;">Need to support</p>
+          </section>
+
+          <section>
+            <h2>Script loading summary</h2>
+            <img src="assets/script-loading-analysis.png" alt="script-loading-analysis"></img>
           </section>
 
           <section>
@@ -295,10 +251,7 @@ require(["path/script.js"], function() {
             <h2>Methods</h2>
           </section>
 
-          <section>
-            <h2>Code Coverage Mechanism</h2>
-            <img src="assets/code-coverage-workflow.png"></img>
-          </section>
+          
 
           <section>
             <h2>Solution</h2>
@@ -313,6 +266,11 @@ require(["path/script.js"], function() {
           <section>
             <h2>Solution</h2>
             <img src="assets/solution-mechanism.png"></img>
+          </section>
+
+          <section>
+            <h2>API structure</h2>
+            <img src="assets/api-structure.png"></img>
           </section>
 
           <section>
@@ -351,12 +309,31 @@ XMLHttpRequest.prototype.open = function(method, url) {
         <section>
           <section>
             <h2>Achievement</h2>
-            <br>
-            <p>A simple website for demo dynamic loading mechanism</p>
+          </section>
+
+          <section>
+            <h3>A simple dynamic loading website</h3>
             <br>
             <ul>
               <li><a href="http://rickychien.github.io/lazyload-sample/old/">Without support lazyload</a></li>
               <li><a href="http://rickychien.github.io/lazyload-sample/new/">With support lazyload</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>New feature has landed in Firefox OS</h3>
+            <br>
+            <ul>
+              <li class="fragment"><p>Thus Firefox OS developer can see precise coverage result</p></li>
+              <li class="fragment"><p>It doesn't break original behavior even works fine in such complicated system</p></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>New feature has been proposed to blanket</h3>
+            <br>
+            <ul>
+              <li class="fragment"><p>It's all open source. Might help a lot of web developers</p></li>
             </ul>
           </section>
         </section>
@@ -368,7 +345,6 @@ XMLHttpRequest.prototype.open = function(method, url) {
             <li class="fragment"><p>Survey prevalent method of dynamic loading on web.</p></li>
             <li class="fragment"><p>Propose a solution to hack DOM API for addressing zero coverage.</p></li>
             <li class="fragment"><p>New mechanism succeed. Dynamic loading scripts have been covered.</p></li>
-            <li class="fragment"><p>Need more testimonies to proof other coverage tools do not have such feature.</p></li>
           </ul>
         </section>
 
