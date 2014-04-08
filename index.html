@@ -280,7 +280,7 @@ require(["path/script.js"], function() {
             <br>
             <ul>
               <li class="fragment"><p>Most of dynamic loading approachs are through DOM modification API and XHR.</p></li>
-              <li class="fragment"><p>We can hack these native DOM modification API and XHR.</p></li>
+              <li class="fragment"><p>We can overwrite these native DOM modification API and XHR.</p></li>
               <li class="fragment"><p>A lot of tests are needed to ensure it doesn't break.</p></li>
             </ul>
           </section>
@@ -370,7 +370,7 @@ XMLHttpRequest.prototype.open = function(method, url) {
           <ul>
             <li class="fragment"><p>We demonstrated the zero coverage issue</p></li>
             <li class="fragment"><p>Analyzed prevalent dynamic loading schemes</p></li>
-            <li class="fragment"><p>Proposed a solution to hack native Web APIs to addressing zero coverage issue</p></li>
+            <li class="fragment"><p>Proposed a solution to overwrite native Web APIs to addressing zero coverage issue</p></li>
             <li class="fragment"><p>Experiment was successful so that can cover dynamic loading scripts</p></li>
             <li class="fragment"><p>Solution is very stable and support most of modern browsers</p></li>
             <li class="fragment"><p>New feature will land into an open source code coverage project - Blanket.js</p></li>
