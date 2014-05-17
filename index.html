@@ -343,32 +343,28 @@ require(["path/script.js"], function() {
 
           <section>
             <h2>DOM modification API</h2>
-            <p>Overwrite original appendChild / insertBefore / replaceChild</p>
+            <p>Overwrite native appendChild / insertBefore / replaceChild</p>
+            <br>
             <pre><code data-trim contenteditable>
+var originalAppendChild = Element.prototype.appendChild;
+
 Element.prototype.appendChild = function(newElement) {
     // Do our hack here
-    return originalAppendChild.apply(this, args); // invoke original method
-};
-
-Element.prototype.insertBefore = function(newElement, referenceElement) {
-    // Do our hack here
-    return originalInsertBefore.apply(this, args); // invoke original method
-};
-
-Element.prototype.replaceChild = function(newElement, oldElement) {
-    // Do our hack here
-    return originalReplaceChild.apply(this, args); // invoke original method
+    return originalAppendChild.apply(this, args); // invoke native method
 };
             </code></pre>
           </section>
 
           <section>
             <h2>XHR API</h2>
-            <p>Overwrite original open method in XHR object</p>
+            <p>Overwrite native open method in XHR object</p>
+            <br>
             <pre><code data-trim contenteditable>
+var originalXHROpen = XMLHttpRequest.prototype.open;
+
 XMLHttpRequest.prototype.open = function(method, url) {
   // Do our hack here
-  return originalXHROpen.apply(this, args); // invoke original method
+  return originalXHROpen.apply(this, args); // invoke native method
 };
             </code></pre>
           </section>
