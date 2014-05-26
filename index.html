@@ -65,19 +65,17 @@
 
           <section>
             <h2>Why we need test coverage?</h2>
-            <p class="fragment">For better software quality, we always write tests to ensure our program can execute correctly</p>
             <div class="fragment">
+              <p>For better software quality, we need to write tests</p>
               <img src="assets/unittests.png" alt="unit tests">
               <small><p>A JavaScript unit tests example</p></small>
             </div>
           </section>
 
           <section>
-              <p class="fragment">Coverage tool can give us a statistics report after testing</p>
-            <div class="fragment">
-              <img src="assets/coverage-report.png" alt="coverage report">
-              <small><p>Blanket.js - JavaScript test coverage tool</p></small>
-            </div>
+            <p>Coverage tool can give us a statistics report after testing</p>
+            <img src="assets/coverage-report.png" alt="coverage report">
+            <small><p>Blanket.js - JavaScript test coverage tool</p></small>
           </section>
 
           <section>
@@ -104,12 +102,13 @@
           </section>
 
           <section>
-            <h2>To build a complicated web application</h2>
+            <h2>To build a web application</h2>
             <ul>
-              <li class="fragment"><p>Developers want to distribute JavaScript files to modules</p></li>
+              <li class="fragment"><p>It's different with traditional website</p></li>
+              <li class="fragment"><p>Developers intent to distribute JavaScript files to modules</p></li>
               <li class="fragment"><p>Web page is composed by modules or third-party libraries</p></li>
               <br>
-              <p class="fragment" style="color: #99CCFF;">Web application have to download resources, but desktop application doesn't</p>
+              <p class="fragment" style="color: #99CCFF;">Web application have to download source code from network</p>
             </ul>
             <div class="fragment">
               <img src="assets/browser-network.png" alt="browser network">
@@ -120,9 +119,8 @@
             <h2>New issues</h2>
             <ul>
               <li class="fragment"><p>Too much requests will slow network down</p></li>
-              <li class="fragment"><p>User do not use all functionalities every times</p></li>
-              <li class="fragment"><p>Some libraries are so huge that may block loading</p></li>
-              <li class="fragment"><p>Some libraries are unnecessary to load in the beginning</p></li>
+              <li class="fragment"><p>User don't use all website functionalities every times</p></li>
+              <li class="fragment"><p>Huge JS libraries may block website loading</p></li>
             </ul>
             <br><br>
             <h3 class="fragment" style="color: #ff4629;">Solutions by dynamic loading</h3>
@@ -157,7 +155,6 @@
           <section>
             <h2>Browser instrumentation</h2>
             <img src="assets/code-coverage-mechanism1.png" alt="code coverage mechanism 1"></img>
-            <p>All of behaviors take place in browser environment</p>
           </section>
 
           <section>
@@ -173,7 +170,7 @@
               <li class="fragment"><p>Pros:</p></li>
               <ul>
                 <li class="fragment"><p>Quite friendly to novice developers</p></li>
-                <li class="fragment"><p>Pretty easy to integrate with full-stack service</p></li>
+                <li class="fragment"><p>Pretty easy to integrate with various environments</p></li>
               </ul>
               <li class="fragment"><p>Cons:</p></li>
               <ul>
@@ -204,8 +201,8 @@
               </ul>
               <li class="fragment"><p>Cons:</p></li>
               <ul>
-                <li class="fragment"><p>Hard to integrate coverage server with other server</p></li>
-                <li class="fragment"><p>Inconvenient to install and configure</p></li>
+                <li class="fragment"><p>Inconvenient to install and configure (ex: need Java)</p></li>
+                <li class="fragment"><p>Hard to integrate instrumentation server with other server</p></li>
               </ul>
             </ul>
           </section>
@@ -224,7 +221,7 @@
 
           <section>
             <h2>Zero coverage</h2>
-            <div class="fragment">
+            <div>
               <p>Firefox OS email app should be covered 21 modules, but actually only one</p>
               <img src="assets/ffos-email-wrong.png" alt="ffox email wrong">
             </div>
@@ -232,8 +229,8 @@
 
           <section>
             <h2>Zero coverage</h2>
-            <div class="fragment">
-              <p>We demonstrate prevalent web dynamic loading scheme</p>
+            <div>
+              <p>Prevalent web dynamic loading scheme</p>
               <img src="assets/lazyload-sample.png" alt="lazyload sample">
               <a href="http://rickychien.github.io/lazyload-sample/old/">Lazyload-sample</a>
             </div>
