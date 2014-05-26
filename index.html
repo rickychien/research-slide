@@ -305,12 +305,8 @@ require(["path/script.js"], function() {
           </section>
 
           <section>
-            <h2>Script loading summary</h2>
-            <img src="assets/script-loading-analysis.png" alt="script loading analysis"></img>
-          </section>
-
-          <section>
-            <p style="font-size: 50px; color: #ff4629;">Mechanism behind dynamic loading is native DOM modification API or XHR API</p>
+            <h2>Summary</h2>
+            <img style="width: 70%; height: 70%" src="assets/script-loading-analysis.png" alt="script loading analysis"></img>
           </section>
         </section>
 
@@ -323,10 +319,15 @@ require(["path/script.js"], function() {
             <h2>Solution</h2>
             <br>
             <ul>
-              <li class="fragment"><p>Most of dynamic loading approachs are through DOM modification API and XHR.</p></li>
-              <li class="fragment"><p>We can overwrite these native DOM modification API and XHR.</p></li>
-              <li class="fragment"><p>A lot of tests are needed to ensure it doesn't break.</p></li>
+              <li class="fragment"><p>Most of dynamic loading approachs are through DOM modification API and XHR</p></li>
+              <li class="fragment"><p>Overwrite DOM modification API and XHR to detect dynamic loading</p></li>
+              <li class="fragment"><p>Tests are needed to ensure our method is stable</p></li>
             </ul>
+          </section>
+
+          <section>
+            <h2>Browser instrumentation Review</h2>
+            <img src="assets/code-coverage-mechanism1.png" alt="code coverage mechanism 1"></img>
           </section>
 
           <section>
