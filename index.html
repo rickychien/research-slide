@@ -49,6 +49,7 @@
           <ol>
             <li>Test coverage</li>
             <li>Web application</li>
+            <li>Background</li>
             <li>Test coverage with dynamic loading</li>
             <li>Analysis</li>
             <li>Method</li>
@@ -64,19 +65,17 @@
 
           <section>
             <h2>Why we need test coverage?</h2>
-            <p class="fragment">For better software quality, we always write tests to ensure our program can execute correctly</p>
             <div class="fragment">
+              <p>For better software quality, we need to write tests</p>
               <img src="assets/unittests.png" alt="unit tests">
               <small><p>A JavaScript unit tests example</p></small>
             </div>
           </section>
 
           <section>
-              <p class="fragment">Coverage tool can give us a statistics report after testing</p>
-            <div class="fragment">
-              <img src="assets/coverage-report.png" alt="coverage report">
-              <small><p>Blanket.js - JavaScript test coverage tool</p></small>
-            </div>
+            <p>Coverage tool can give us a statistics report after testing</p>
+            <img src="assets/coverage-report.png" alt="coverage report">
+            <small><p>Blanket.js - JavaScript test coverage tool</p></small>
           </section>
 
           <section>
@@ -103,12 +102,13 @@
           </section>
 
           <section>
-            <h2>To build a complicated web application</h2>
+            <h2>To build a web application</h2>
             <ul>
-              <li class="fragment"><p>Developers want to distribute JavaScript files to modules</p></li>
+              <li class="fragment"><p>It's different with traditional website</p></li>
+              <li class="fragment"><p>Developers intent to distribute JavaScript files to modules</p></li>
               <li class="fragment"><p>Web page is composed by modules or third-party libraries</p></li>
               <br>
-              <p class="fragment" style="color: #99CCFF;">Web application have to download resources, but desktop application doesn't</p>
+              <p class="fragment" style="color: #99CCFF;">Web application have to download source code from network</p>
             </ul>
             <div class="fragment">
               <img src="assets/browser-network.png" alt="browser network">
@@ -119,9 +119,8 @@
             <h2>New issues</h2>
             <ul>
               <li class="fragment"><p>Too much requests will slow network down</p></li>
-              <li class="fragment"><p>User do not use all functionalities every times</p></li>
-              <li class="fragment"><p>Some libraries are so huge that may block loading</p></li>
-              <li class="fragment"><p>Some libraries are unnecessary to load in the beginning</p></li>
+              <li class="fragment"><p>User don't use all website functionalities every times</p></li>
+              <li class="fragment"><p>Huge JS libraries may block website loading</p></li>
             </ul>
             <br><br>
             <h3 class="fragment" style="color: #ff4629;">Solutions by dynamic loading</h3>
@@ -144,36 +143,34 @@
           </section>
 
           <section>
-            <h2>Browser-based test runner</h2>
-            <ul>
-              <li class="fragment"><p>Host and to open the runner in the browser</p></li>
-              <li class="fragment"><p>Simply use the included html runner in your test framework</p></li>
-              <li class="fragment"><p>Provide a real browser environment to run tests</p></li>
-            </ul>
+            <h2>Browser test runner</h2>
+             <p>Provide a real browser environment to run tests</p>
           </section>
 
           <section>
-            <h2>Code Coverage Mechanism 1</h2>
-            <p>Browser instrumentation</p>
+            <h2>Coverage mechanism</h2>
+            <p>Browser instrumentation / Server instrumentation</p>
+          </section>
+
+          <section>
+            <h2>Browser instrumentation</h2>
             <img src="assets/code-coverage-mechanism1.png" alt="code coverage mechanism 1"></img>
-            <p>All of behaviors take place in browser environment</p>
           </section>
 
           <section>
-            <h2>Code Coverage Mechanism 1</h2>
+            <h2>Browser instrumentation</h2>
             <img src="assets/mechanism1-client-server.png" alt=""></img>
             <p>Code instrumenting on browser</p>
           </section>
 
           <section>
-            <h2>Mechanism 1</h2>
+            <h2>Browser instrumentation</h2>
             <img class="fragment" src="assets/blanket.png"></img>
             <ul>
               <li class="fragment"><p>Pros:</p></li>
               <ul>
                 <li class="fragment"><p>Quite friendly to novice developers</p></li>
-                <li class="fragment"><p>No changes needed to source files, and only minor changes needed to test runners</p></li>
-                <li class="fragment"><p>Pretty easy to integrate with full-stack service</p></li>
+                <li class="fragment"><p>Pretty easy to integrate with various environments</p></li>
               </ul>
               <li class="fragment"><p>Cons:</p></li>
               <ul>
@@ -183,38 +180,35 @@
           </section>
 
           <section>
-            <h2>Code Coverage Mechanism 2</h2>
-            <p>Server instrumentation</p>
+            <h2>Server instrumentation</h2>
             <img src="assets/code-coverage-mechanism2.png" alt="code coverage mechanism 2"></img>
             <p>Need to use customized coverage server</p>
           </section>
 
           <section>
-            <h2>Code Coverage Mechanism 2</h2>
+            <h2>Server instrumentation</h2>
             <img src="assets/mechanism2-client-server.png" alt="browser test runner"></img>
             <p>Code instrumenting on coverage server</p>
           </section>
 
           <section>
-            <h2>Mechanism 2</h2>
+            <h2>Server instrumentation</h2>
             <img class="fragment" src="assets/jscover.png"></img>
             <ul>
               <li class="fragment"><p>Pros:</p></li>
               <ul>
                 <li class="fragment"><p>The full coverage support including dynamic loading script</p></li>
-                <li class="fragment"><p>No changes needed to source files</p></li>
               </ul>
               <li class="fragment"><p>Cons:</p></li>
               <ul>
-                <li class="fragment"><p>Hard to integrate coverage server with other server</p></li>
-                <li class="fragment"><p>Inconvenient to install and configure than mechanism 1</p></li>
-                <li class="fragment"><p>Not well documented</p></li>
+                <li class="fragment"><p>Inconvenient to install and configure (ex: need Java)</p></li>
+                <li class="fragment"><p>Hard to integrate instrumentation server with other server</p></li>
               </ul>
             </ul>
           </section>
 
           <section>
-            <h2>Our goal is to improve mechanism 1</h2>
+            <h2>Our goal is to improve<br>browser instrumentation</h2>
             <img src="assets/blanket.png"></img>
             <p>Make it possible to cover dynamic loading scripts</p>
           </section>
@@ -227,7 +221,7 @@
 
           <section>
             <h2>Zero coverage</h2>
-            <div class="fragment">
+            <div>
               <p>Firefox OS email app should be covered 21 modules, but actually only one</p>
               <img src="assets/ffos-email-wrong.png" alt="ffox email wrong">
             </div>
@@ -235,8 +229,8 @@
 
           <section>
             <h2>Zero coverage</h2>
-            <div class="fragment">
-              <p>We demonstrate prevalent web dynamic loading scheme</p>
+            <div>
+              <p>Prevalent web dynamic loading scheme</p>
               <img src="assets/lazyload-sample.png" alt="lazyload sample">
               <a href="http://rickychien.github.io/lazyload-sample/old/">Lazyload-sample</a>
             </div>
@@ -246,7 +240,7 @@
         <section>
           <section>
             <h2>Analysis</h2>
-            <p>Demonstrate the web script loading approachs</p>
+            <p>Analyze web script loading approachs</p>
           </section>
 
           <section>
@@ -311,12 +305,8 @@ require(["path/script.js"], function() {
           </section>
 
           <section>
-            <h2>Script loading summary</h2>
-            <img src="assets/script-loading-analysis.png" alt="script loading analysis"></img>
-          </section>
-
-          <section>
-            <p style="font-size: 50px; color: #ff4629;">Mechanism behind dynamic loading is native DOM modification API or XHR API</p>
+            <h2>Summary</h2>
+            <img style="width: 70%; height: 70%" src="assets/script-loading-analysis.png" alt="script loading analysis"></img>
           </section>
         </section>
 
@@ -329,10 +319,15 @@ require(["path/script.js"], function() {
             <h2>Solution</h2>
             <br>
             <ul>
-              <li class="fragment"><p>Most of dynamic loading approachs are through DOM modification API and XHR.</p></li>
-              <li class="fragment"><p>We can overwrite these native DOM modification API and XHR.</p></li>
-              <li class="fragment"><p>A lot of tests are needed to ensure it doesn't break.</p></li>
+              <li class="fragment"><p>Most of dynamic loading approachs are through DOM modification API and XHR</p></li>
+              <li class="fragment"><p>Overwrite DOM modification API and XHR to detect dynamic loading</p></li>
+              <li class="fragment"><p>Tests are needed to ensure our method is stable</p></li>
             </ul>
+          </section>
+
+          <section>
+            <h2>Browser instrumentation Review</h2>
+            <img src="assets/code-coverage-mechanism1.png" alt="code coverage mechanism 1"></img>
           </section>
 
           <section>
@@ -404,10 +399,6 @@ XMLHttpRequest.prototype.open = function(method, url) {
 
           <section>
             <h3>New feature has been proposed to blanket</h3>
-            <br>
-            <ul>
-              <li class="fragment"><p>It's all open source. Might help a lot of web developers</p></li>
-            </ul>
           </section>
         </section>
 
@@ -419,7 +410,7 @@ XMLHttpRequest.prototype.open = function(method, url) {
             <li class="fragment"><p>Proposed a solution to overwrite native Web APIs to addressing zero coverage issue</p></li>
             <li class="fragment"><p>Experiment was successful so that can cover dynamic loading scripts</p></li>
             <li class="fragment"><p>Solution is very stable and support most of modern browsers</p></li>
-            <li class="fragment"><p>New feature will land into an open source code coverage project - Blanket.js</p></li>
+            <li class="fragment"><p>New feature will land into Blanket.js</p></li>
           </ul>
         </section>
 
