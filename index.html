@@ -181,7 +181,7 @@
               </ul>
               <li class="fragment"><p>Cons:</p></li>
               <ul>
-                <li class="fragment"><p>Not support to dynamic loading coverage</p></li>
+                <li class="fragment"><p>Not support to dynamic lazy loading coverage</p></li>
               </ul>
             </ul>
           </section>
@@ -204,7 +204,7 @@
             <ul>
               <li class="fragment"><p>Pros:</p></li>
               <ul>
-                <li class="fragment"><p>The full coverage support including dynamic loading script</p></li>
+                <li class="fragment"><p>The full coverage support including dynamic lazy loading</p></li>
               </ul>
               <li class="fragment"><p>Cons:</p></li>
               <ul>
@@ -237,7 +237,7 @@
           <section>
             <h2>Zero coverage</h2>
             <div>
-              <p>Prevalent web dynamic loading scheme</p>
+              <p>Prevalent web dynamic lazy loading scheme</p>
               <img src="assets/lazyload-sample.png" alt="lazyload sample">
               <a href="http://rickychien.github.io/lazyload-sample/old/">Lazyload-sample</a>
             </div>
@@ -326,8 +326,8 @@ require(["path/script.js"], function() {
             <h2>Solution</h2>
             <br>
             <ul>
-              <li class="fragment"><p>Most of dynamic loading approachs are through DOM modification API and XHR</p></li>
-              <li class="fragment"><p>Overwrite DOM modification API and XHR to detect dynamic loading</p></li>
+              <li class="fragment"><p>Most of dynamic lazy loading approachs are through DOM modification API and XHR</p></li>
+              <li class="fragment"><p>Overwrite DOM modification API and XHR to detect dynamic lazy loading</p></li>
               <li class="fragment"><p>Tests are needed to ensure our method is stable</p></li>
             </ul>
           </section>
@@ -382,7 +382,7 @@ XMLHttpRequest.prototype.open = function(method, url) {
           </section>
 
           <section>
-            <h3>A simple dynamic loading website</h3>
+            <h3>A simple dynamic lazy loading website</h3>
             <br>
             <ul>
               <li><a href="http://rickychien.github.io/lazyload-sample/old/">Without support lazyload</a></li>
@@ -413,9 +413,9 @@ XMLHttpRequest.prototype.open = function(method, url) {
           <h2>Conclusion</h2>
           <ul>
             <li class="fragment"><p>We demonstrated the zero coverage issue</p></li>
-            <li class="fragment"><p>Analyzed prevalent dynamic loading schemes</p></li>
+            <li class="fragment"><p>Analyzed prevalent dynamic lazy loading schemes</p></li>
             <li class="fragment"><p>Proposed a solution to overwrite native Web APIs to addressing zero coverage issue</p></li>
-            <li class="fragment"><p>Solution succeeded so that can cover dynamic loading scripts</p></li>
+            <li class="fragment"><p>Solution succeeded so that can cover dynamic lazy loading</p></li>
             <li class="fragment"><p>Solution is very stable and support most of modern browsers</p></li>
             <li class="fragment"><p>New feature will land into Blanket.js</p></li>
           </ul>
