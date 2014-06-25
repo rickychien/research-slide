@@ -148,22 +148,6 @@
           </section>
 
           <section>
-            <h2>Browser instrumentation</h2>
-            <img class="fragment" src="assets/blanket.png"></img>
-            <ul>
-              <li class="fragment"><p>Pros:</p></li>
-              <ul>
-                <li class="fragment"><p>Quite friendly to novice developers</p></li>
-                <li class="fragment"><p>Pretty easy to integrate with various environments</p></li>
-              </ul>
-              <li class="fragment"><p>Cons:</p></li>
-              <ul>
-                <li class="fragment"><p>Not support to dynamic lazy loading coverage</p></li>
-              </ul>
-            </ul>
-          </section>
-
-          <section>
             <h2>Server instrumentation</h2>
             <img src="assets/mechanism2-client-server.png" alt="browser test runner"></img>
             <p>Code instrumentation on coverage server</p>
@@ -173,22 +157,6 @@
             <h2>Server instrumentation</h2>
             <img src="assets/code-coverage-mechanism2.png" alt="code coverage mechanism 2"></img>
             <p>Need to use customized coverage server</p>
-          </section>
-
-          <section>
-            <h2>Server instrumentation</h2>
-            <img class="fragment" src="assets/jscover.png"></img>
-            <ul>
-              <li class="fragment"><p>Pros:</p></li>
-              <ul>
-                <li class="fragment"><p>The full coverage support including dynamic lazy loading</p></li>
-              </ul>
-              <li class="fragment"><p>Cons:</p></li>
-              <ul>
-                <li class="fragment"><p>Inconvenient to install and configure (ex: install Java, launch server)</p></li>
-                <li class="fragment"><p>Hard to integrate instrumentation server with other server</p></li>
-              </ul>
-            </ul>
           </section>
         </section>
 
@@ -299,7 +267,7 @@ require(["path-to/script.js"], function() {
             <ul>
               <li class="fragment"><p>Most of dynamic lazy loading approachs are through DOM modification API and XHR</p></li>
               <li class="fragment"><p>Overwrite DOM modification API and XHR to detect dynamic lazy loading</p></li>
-              <li class="fragment"><p>Tests are needed to ensure our method is stable</p></li>
+              <li class="fragment"><p>Tests are needed to ensure our method is safe</p></li>
             </ul>
           </section>
 
@@ -371,11 +339,6 @@ XMLHttpRequest.prototype.open = function(method, url) {
           </section>
 
           <section>
-          <h3>Supported browsers</h3>
-            <img src="assets/browser-support.png"></img>
-          </section>
-
-          <section>
             <h3>New feature has been proposed to blanket</h3>
           </section>
         </section>
@@ -387,7 +350,7 @@ XMLHttpRequest.prototype.open = function(method, url) {
             <li class="fragment"><p>Analyzed code instrumentation mechanism and dynamic lazy loading schemes</p></li>
             <li class="fragment"><p>Proposed a solution to overwrite native Web APIs to addressing zero coverage issue</p></li>
             <li class="fragment"><p>Solution succeeded so that can cover dynamic lazy loading</p></li>
-            <li class="fragment"><p>Solution is very stable and support most of modern browsers</p></li>
+            <li class="fragment"><p>Solution is safe that even integrated into FFOS testing framework</p></li>
             <li class="fragment"><p>New feature will land into Blanket.js</p></li>
           </ul>
         </section>
