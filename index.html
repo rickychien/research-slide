@@ -269,14 +269,12 @@ require(["path-to/script.js"], function() {
           </section>
 
           <section>
-            <h2>API structure</h2>
+            <h2>Web application &amp; Web API</h2>
             <img src="assets/api-structure.png" alt="api structure"></img>
           </section>
 
           <section>
             <h2>DOM modification API</h2>
-            <p>Overwrite native appendChild / insertBefore / replaceChild</p>
-            <br>
             <pre><code data-trim contenteditable>
 var originalAppendChild = Element.prototype.appendChild;
 
@@ -289,8 +287,6 @@ Element.prototype.appendChild = function(newElement) {
 
           <section>
             <h2>XHR API</h2>
-            <p>Overwrite native open method in XHR object</p>
-            <br>
             <pre><code data-trim contenteditable>
 var originalXHROpen = XMLHttpRequest.prototype.open;
 
